@@ -1,0 +1,8 @@
+<div ngClass="product">
+  <div ngClass="name">Name: {{ product.name }}</div>
+  {{ product.category }} | ${{ product.price }} <button (click)="onBuy()">Buy it!</button>
+  <div ngClass="description">{{ product.description }}</div>
+  <hr/>
+  <p>Available: {{ product.isAvalable }}</p>
+  <p *ngIf="product.composition">Composition: {{ product.composition }}</p>
+</div>
