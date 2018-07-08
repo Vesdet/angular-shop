@@ -25,7 +25,7 @@ export class ProductsService {
         return new Product(name, 79, true, Categories.Drink, 'Grenadine juice',
           ['Water', 'Grenadine extract', 'Sugar', 'E36']);
       case 'Tomato':
-        return new Product(name, 145, false, Categories.Vegetables, 'Just yellow tomato');
+        return new Product(name, 145, false, Categories.Vegetable, 'Just yellow tomato');
       default:
         return new Product();
     }

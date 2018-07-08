@@ -1,6 +1,6 @@
 export enum Categories {
   Fruit = 'FRUIT',
-  Vegetables = 'VEGETABLE',
+  Vegetable = 'VEGETABLE',
   Meat = 'MEAT',
   Drink = 'DRINK'
 }
