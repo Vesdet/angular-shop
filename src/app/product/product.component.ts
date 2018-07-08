@@ -9,6 +9,7 @@ import { CardService } from '../services/card.service';
 })
 export class ProductComponent {
   @Input() product: Product;
+  @Input() isReadOnly = false;
 
   constructor(
     public cardService: CardService

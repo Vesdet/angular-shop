@@ -1,5 +1,5 @@
-.products .products-header {
-  color: blueviolet;
+.card .card-header {
   font-size: 24px;
+  color: blueviolet;
   text-decoration: underline;
 }

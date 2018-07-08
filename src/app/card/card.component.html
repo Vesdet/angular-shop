@@ -1,0 +1,8 @@
+<div ngClass="card">
+  <div ngClass="card-header">
+    Your Card
+    <button (click)="onClear()">Clear</button>
+  </div>
+  <app-product *ngFor="let product of products" [product]="product" [isReadOnly]="true"></app-product>
+  <h4>Total Price: {{ totalPrice }}$</h4>
+</div>

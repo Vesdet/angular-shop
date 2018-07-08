@@ -7,12 +7,14 @@ import { ProductListComponent } from './product-list/product-list.component';
 
 import { ProductsService } from './services/products.service';
 import { CardService } from './services/card.service';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductComponent,
-    ProductListComponent
+    ProductListComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule

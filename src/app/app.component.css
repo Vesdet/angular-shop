@@ -1,0 +1,7 @@
+.task1 {
+  display: flex;
+}
+
+.task1 * {
+  width: 50%;
+}
