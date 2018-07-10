@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CardService } from '../services/card.service';
-import { Product } from '../model/product.model';
+
+import { CardService } from '../../core-module';
+import { Product } from '../../shared-module';
 
 @Component({
   selector: 'app-card',

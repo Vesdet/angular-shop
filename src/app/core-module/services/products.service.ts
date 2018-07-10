@@ -1,7 +1,10 @@
-import {Injectable} from '@angular/core';
-import {Product, Categories} from '../model/product.model';
+import { Injectable } from '@angular/core';
 
-@Injectable()
+import { Product, Categories } from '../../shared-module';
+
+@Injectable({
+  providedIn: "root"
+})
 export class ProductsService {
   private products: Array<Product> = [
     this.createProduct('Banana'),

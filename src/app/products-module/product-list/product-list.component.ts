@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from '../services/products.service';
-import { Product } from '../model/product.model';
+
+import { CardService, ProductsService } from '../../core-module';
+import { Product } from '../../shared-module';
 
 @Component({
   selector: 'app-product-list',
@@ -11,10 +12,15 @@ export class ProductListComponent implements OnInit {
   public products: Array<Product>;
 
   constructor(
-    public productsService: ProductsService
+    public productsService: ProductsService,
+    public cardService: CardService
   ) { }
 
   ngOnInit() {
     this.products = this.productsService.getProducts();
+  }
+
+  onBuyProduct(product: Product) {
+    this.cardService.addProductToCard(product);
   }
 }

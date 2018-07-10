@@ -1,11 +1,14 @@
-import {EventEmitter, Injectable} from '@angular/core';
-import { Product } from '../model/product.model';
+import { EventEmitter, Injectable } from '@angular/core';
+
+import { Product } from '../../shared-module';
 import { ProductsService } from './products.service';
 
 const SEPARATOR = ', ';
 const STORAGE_FIED_NAME = 'shopCard';
 
-@Injectable()
+@Injectable({
+  providedIn: "root"
+})
 export class CardService {
   private purchases: Array<Product> = [];
   purchasesChange$: EventEmitter<Array<Product>> = new EventEmitter();
