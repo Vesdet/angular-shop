@@ -3,6 +3,6 @@
     Your Card
     <button (click)="onClear()">Clear</button>
   </div>
-  <app-product *ngFor="let product of products" [product]="product" [isReadOnly]="true"></app-product>
+  <app-card-item *ngFor="let purchase of purchases" [purchase]="purchase"></app-card-item>
   <h4>Total Price: {{ totalPrice }}$</h4>
 </div>

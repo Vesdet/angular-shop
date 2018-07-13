@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { CardService } from '../../core-module';
-import { Product } from '../../shared-module';
+import { CardService } from '../services/card.service';
+import { Purchase } from '../models/purchase.model';
 
 @Component({
   selector: 'app-card',
@@ -9,25 +9,28 @@ import { Product } from '../../shared-module';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit {
-  public products: Array<Product>;
-  public totalPrice = 0;
+  public purchases: Array<Purchase>;
+  public totalPrice: number;
   constructor(
     public cardService: CardService
   ) { }
 
   ngOnInit() {
-    this.updateProducts(this.cardService.getPurchases());
-    this.cardService.purchasesChange$
-      .subscribe(purchases => this.updateProducts(purchases));
+    this.updatePurchases(this.cardService.getPurchases());
+    this.totalPrice = this.cardService.getTotalPrice();
+
+    this.cardService.purchasesUpdate$
+      .subscribe(purchases => {
+        this.updatePurchases(purchases);
+        this.totalPrice = this.cardService.getTotalPrice();
+      });
   }
 
   onClear() {
     this.cardService.clearCard();
   }
 
-  private updateProducts(products: Array<Product>): void {
-    console.log(products, this.products);
-    this.products = products;
-    this.totalPrice = products.reduce((acc, it) => acc += it.price, 0);
+  private updatePurchases(products: Array<Purchase>): void {
+    this.purchases = products;
   }
 }

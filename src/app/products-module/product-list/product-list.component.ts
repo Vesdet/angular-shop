@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { CardService, ProductsService } from '../../core-module';
-import { Product } from '../../shared-module';
+import { CardService } from '../../card-module';
+import { Product } from '../models/product.model';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-product-list',
@@ -10,9 +11,8 @@ import { Product } from '../../shared-module';
 })
 export class ProductListComponent implements OnInit {
   public products: Array<Product>;
-
   constructor(
-    public productsService: ProductsService,
+    public productsService: ProductService,
     public cardService: CardService
   ) { }
 
@@ -22,5 +22,6 @@ export class ProductListComponent implements OnInit {
 
   onBuyProduct(product: Product) {
     this.cardService.addProductToCard(product);
+    this.productsService.changeQuantityOfProduct(product.id, -1);
   }
 }

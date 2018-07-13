@@ -1,1 +1,1 @@
-// exports here
+export * from './services/card.service';

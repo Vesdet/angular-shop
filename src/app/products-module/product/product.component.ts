@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+
 import { Product } from '../models/product.model';
 
 @Component({
@@ -8,7 +9,6 @@ import { Product } from '../models/product.model';
 })
 export class ProductComponent {
   @Input() product: Product;
-  @Input() isReadOnly = false;
   @Output() buyProduct = new EventEmitter<Product>();
 
   constructor() {}

@@ -6,6 +6,7 @@ export enum Categories {
 }
 
 interface ProductInterface {
+  id: number;
   name: string;
   price: number;
   isAvailable: boolean;
@@ -15,20 +16,17 @@ interface ProductInterface {
 }
 
 export class Product implements ProductInterface {
-  name = 'Strange Product';
-  price = NaN;
-  isAvailable = false;
-
   constructor(
-    name?: string,
-    price?: number,
-    isAvailable?: boolean,
+    public id: number,
+    public name: string,
+    public price: number,
+    public isAvailable: boolean,
     public category?: Categories,
     public description?: string,
     public composition?: Array<string>
   ) {
-    if (name) { this.name = name; }
-    if (price) { this.price = price; }
-    if (isAvailable) { this.isAvailable = isAvailable || false; }
+    this.name = name || 'Strange Product';
+    this.price = price || NaN;
+    this.isAvailable = isAvailable || false;
   }
 }

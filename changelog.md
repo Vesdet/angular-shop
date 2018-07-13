@@ -15,7 +15,7 @@ Class **Product** implements **ProductInterface** with default properties
 
 ## Services
 ### Products service
-path: `src/app/servises/products.service.ts`
+path: `src/app/servises/product.service.ts`
 
 It has private field with products in shop, methods for get all products and create product by name
 

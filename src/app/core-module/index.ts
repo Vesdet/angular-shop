@@ -1,2 +1,1 @@
-export * from './services/card.service';
-export * from './services/products.service';
+export * from './services/local-storage.service';
