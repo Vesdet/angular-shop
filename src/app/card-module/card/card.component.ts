@@ -14,6 +14,7 @@ export class CardComponent implements OnInit {
 
   @ViewChild('warningField')
   private warningField: ElementRef;
+  private warningTimeid: number = null;
   isShowWarning = false;
 
   constructor(
@@ -40,19 +41,22 @@ export class CardComponent implements OnInit {
   }
 
   onWarning(purchase: Purchase) {
-    const elem = this.warningField.nativeElement;
+    if (this.warningTimeid) {
+      clearTimeout(this.warningTimeid);
+    }
+    const elem = <HTMLElement> this.warningField.nativeElement;
     Array.from(elem.getElementsByClassName('purchase-name'))
-      .forEach(el => el.innerHTML = purchase.productName);
+      .forEach((el: HTMLElement) => el.innerHTML = purchase.productName);
 
     this.isShowWarning = true;
+    this.warningTimeid = setTimeout(() => {
+      this.isShowWarning = false;
+      elem.onclick = null;
+    }, 3000);
     elem.onclick = () => {
       this.isShowWarning = false;
       this.cardService.addProductToCard(purchase.productId);
     };
-    setTimeout(() => {
-      this.isShowWarning = false;
-      elem.onclick = null;
-    }, 3000);
   }
 
   private updatePurchases(purchases: Array<Purchase>): void {
