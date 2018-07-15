@@ -30,18 +30,35 @@ export class CardService {
       });
   }
 
-  getTotalPrice() {
-    return this.totalPrice;
-  }
-
-  addProductToCard(product: Product): void {
-    const purchase = this.purchases.find(item => item.productId === product.id);
+  addProductToCard(productId: number): void {
+    let purchase = this.purchases.find(item => item.productId === productId);
     if (purchase) {
       purchase.count++;
     } else {
-      this.purchases.push(new Purchase(product.id, product.name, product.price, 1));
+      const product: Product = this.productsService.getProducts([productId])[0];
+      purchase = new Purchase(product.id, product.name, product.price, 1);
+      this.purchases.push(purchase);
     }
-    this.totalPrice += product.price;
+    this.totalPrice += purchase.price;
+    this.localStorageService.setItem(STORAGE_FIED_NAME, this.purchases);
+    this.purchasesUpdate$.emit(this.purchases);
+  }
+
+  changeProductCountInCard(productId: number, newCount: number): void {
+    const purchase = this.purchases.find(item => item.productId === productId);
+    if (!purchase) { return; }
+
+    try {
+      this.productsService.changeQuantityOfProduct(productId, purchase.count - newCount);
+    } catch (e) {
+      return;
+    }
+    this.totalPrice += (newCount - purchase.count) * purchase.price;
+    if (newCount === 0) {
+      this.purchases.splice(this.purchases.indexOf(purchase), 1);
+    } else {
+      purchase.count = newCount;
+    }
     this.localStorageService.setItem(STORAGE_FIED_NAME, this.purchases);
     this.purchasesUpdate$.emit(this.purchases);
   }
@@ -58,5 +75,9 @@ export class CardService {
 
   getPurchases(): Array<Purchase> {
     return this.purchases;
+  }
+
+  getTotalPrice(): number {
+    return this.totalPrice;
   }
 }

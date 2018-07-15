@@ -1,4 +1,4 @@
-<div ngClass="product">
+<div class="product" [ngClass]="{ 'unavailable': !product.isAvailable }">
   <div ngClass="name">Name: {{ product.name }}</div>
   {{ product.category }} | ${{ product.price }}
   <button [disabled]="!product.isAvailable" (click)="onBuy()">Buy it!</button>

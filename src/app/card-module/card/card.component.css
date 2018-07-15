@@ -3,3 +3,10 @@
   color: blueviolet;
   text-decoration: underline;
 }
+
+.card-warning {
+  padding: 5px;
+  cursor: pointer;
+  color: red;
+  box-shadow: 0 0 1em red;
+}

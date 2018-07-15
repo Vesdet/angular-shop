@@ -3,6 +3,20 @@
     Your Card
     <button (click)="onClear()">Clear</button>
   </div>
-  <app-card-item *ngFor="let purchase of purchases" [purchase]="purchase"></app-card-item>
+  <app-card-item
+    *ngFor="let purchase of purchases"
+    [purchase]="purchase"
+    (changeCount)="changePurchaseCount(purchase.productId, $event)"
+    (remove)="onWarning(purchase)"
+  >
+  </app-card-item>
   <h4>Total Price: {{ totalPrice }}$</h4>
+  <div
+    class="card-warning"
+    #warningField
+    [ngStyle]="{ display: isShowWarning ? 'block' : 'none' }"
+  >
+    <span class="purchase-name"></span> was removed from list of purchases.
+    Click to return <span class="purchase-name"></span> to list.
+  </div>
 </div>

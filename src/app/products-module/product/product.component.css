@@ -18,3 +18,7 @@
 .product p {
   margin: 0;
 }
+
+.product.unavailable {
+  border: 2px solid red;
+}

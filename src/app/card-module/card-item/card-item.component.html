@@ -1,4 +1,9 @@
-<div ngClass="card-purchase">
+<div id="hello" ngClass="card-purchase" appHighlight>
   {{ purchase.productName }} |
-  x{{ purchase.count }} | ${{ purchase.price }} | {{ purchase.price * purchase.count }}
+  x{{purchase.count}}
+  | ${{ purchase.price }} | {{ purchase.price * purchase.count }}
+
+  <button (click)="onChangeCount(1)">increase</button>
+  <button (click)="onChangeCount(-1)">decrease</button>
+  <button (click)="onRemoveFromCard()">remove</button>
 </div>
