@@ -13,7 +13,8 @@ export class ProductComponent {
 
   constructor() {}
 
-  onBuy(): void {
+  onBuy(event): void {
+    event.stopPropagation();
     this.buyProduct.emit(this.product);
     console.log(`~ProductComponent~: User bought ${this.product.name} for ${this.product.price}$`);
   }

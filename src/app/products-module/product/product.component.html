@@ -5,7 +5,7 @@
 >
   <div ngClass="name">Name: {{ product.name }}</div>
   {{ product.category }} | ${{ product.price }}
-  <button [disabled]="!product.isAvailable" (click)="onBuy()">Buy it!</button>
+  <button [disabled]="!product.isAvailable" (click)="onBuy($event)">Buy it!</button>
   <div ngClass="description">{{ product.description }}</div>
   <hr/>
   <p>Available: {{ product.isAvailable }}</p>
