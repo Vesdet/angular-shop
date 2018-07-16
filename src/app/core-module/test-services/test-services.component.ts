@@ -1,8 +1,8 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Optional } from '@angular/core';
 
 import { CONSTANTS } from '../services/constants.service';
 import { ConfigOptionsService } from '../services/config-options.service';
-import { GeneratorSymbols2, GeneratorSymbols5, GeneratorService } from '../services/generator.service';
+import { GeneratorSymbols2, GeneratorSymbols5, GeneratorSymbols7, GeneratorService } from '../services/generator.service';
 
 @Component({
   selector: 'app-test-services',
@@ -19,14 +19,15 @@ export class TestServicesComponent implements OnInit {
     public configOptionsService: ConfigOptionsService,
     @Inject(GeneratorSymbols2) private generatorService2: GeneratorService,
     @Inject(GeneratorSymbols5) private generatorService5: GeneratorService,
+    @Optional() @Inject(GeneratorSymbols7) private generatorService7: GeneratorService,
   ) {
-    console.log(configOptionsService);
-
+    if (!generatorService7) {
+      console.log('~~GeneratorSymbols7 service doesn\'t provided~~');
+    }
   }
 
   ngOnInit() {
     const cs = this.configOptionsService;
-    console.log(cs);
     cs.id = 13;
     cs.login = 'Vesdet';
     cs.email = 'vesdet@gmail.com';

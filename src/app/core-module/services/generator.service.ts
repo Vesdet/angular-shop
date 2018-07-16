@@ -4,6 +4,7 @@ import { CONSTANTS, ConstantsInterface } from './constants.service';
 
 export const GeneratorSymbols2 = new InjectionToken<GeneratorService>('generator-symbols-2');
 export const GeneratorSymbols5 = new InjectionToken<GeneratorService>('generator-symbols-5');
+export const GeneratorSymbols7 = new InjectionToken<GeneratorService>('generator-symbols-7');
 
 export class GeneratorService {
   constructor(

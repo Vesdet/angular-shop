@@ -1,4 +1,7 @@
+@import '../../shared-module/styles/shared-directives.css';
+
 .product {
+  position: relative;
   border: 2px solid blueviolet;
   padding: 5px;
   margin: 5px 20px;
