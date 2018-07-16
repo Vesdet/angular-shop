@@ -1,7 +1,13 @@
-.task1 {
+.shop {
   display: flex;
 }
 
-.task1 * {
+.shop * {
   width: 50%;
+}
+
+.task3 {
+  margin-top: 50px;
+  padding: 20px;
+  border-top: 2px solid blueviolet;
 }

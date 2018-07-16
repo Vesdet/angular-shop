@@ -1,3 +1,17 @@
-<p>
-  test-services works!
-</p>
+<div>
+  <ng-content></ng-content>
+  <hr/>
+
+  <h3>Constants service: &#123; provide: CONSTANTS, useValue: ConstantsService &#125;</h3>
+  App: {{constants.App}} | Version: {{constants.Version}}
+  <hr/>
+
+  <h3>ConfigOptionsService service: &#123; provide: ConfigOptionsService, useValue: AdminConfigOptions &#125;</h3>
+  User info:{{userData}}
+  <hr/>
+
+  <h3>Generator service: &#123; provide: GeneratorSymbols2, useFactory: GeneratorServiceFactory(2), deps: [CONSTANTS] &#125;</h3>
+  Generator-2: <span class="generator-value">{{generator2Value}}</span><button (click)="onGenerate(2)">Generate 2 letters</button><br/>
+  Generator-5: <span class="generator-value">{{generator5Value}}</span><button (click)="onGenerate(5)">Generate 5 letters</button><br/>
+  <hr/>
+</div>
