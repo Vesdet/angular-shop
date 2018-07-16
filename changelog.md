@@ -1,3 +1,30 @@
+# ~Task3~
+
+## Services
+path: `src\app\core-module\services`
+#### ConfigOptions
+Class with getters and setters
+(provided to CoreModule by useClass - AdminConfigOptions)
+#### Constants
+Object with `App`, `Version` and `GeneratorSequence` fields
+(provided to CoreModule by useValue with custom InjectionToken) 
+#### Generator
+Class and factory function
+
+## TestServicesComponent
+path: `src\app\core-module\test-services`
+
+Component inject all above services (use Optional decorator)
+
+## Favourites directive
+path: `src\app\shared-module\directives\favourites.directive.ts`
+
+Add star label to element (I use it in ProductComponent).
+1. Rerender2
+2. ElementRef
+3. HostListener decorator
+4. Input decorator for getting color
+
 # ~Task2~
 
 Split application into several Modules
